@@ -1,0 +1,20 @@
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+.featured-fade-out {
+    animation: fadeOut 1s ease;
+}
+
+  
+  .popularity-and-rating {
+    color: white;
+    font-size: 14px;
+    left: 142px;
+    top: 444px;
+  }
