@@ -133,7 +133,7 @@ const [currentPage, setCurrentPage] = useState(1);
         </div>
 
         <div className="navbar-nav">
-            <a className="nav-item nav-link active" href="#">
+            <a className="nav-item nav-link active account-username" href="#">
                 <img className="rounded-circle mr-2" alt="Account" src="/ellipse-757@2x.png" style={{width: '30px', height: '30px'}} />
                 TOM
             </a>

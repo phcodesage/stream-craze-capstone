@@ -26,12 +26,12 @@ const FeaturedMovieCard = ({ featuredMovie, loading }) => {
   }
 
   return (
-    <div className={`row ${fade}`}>
+    <div className={`row custom-fade-header ${fade}`} style={{ position: 'relative' }}>
       <img 
         className="home-child col-12" 
         alt={featuredMovie?.title} 
         src={`${baseUrl}${featuredMovie?.backdrop_path}`}
-        style={{minWidth: '100%', filter: 'blur(4px)'}} 
+        style={{minWidth: '100%', filter: 'blur(4px)', textAlign: 'left'}} 
       />
  
         <div className="heart-wrapper col-1">
@@ -40,14 +40,14 @@ const FeaturedMovieCard = ({ featuredMovie, loading }) => {
         <div className="sci-fi-movie col-3">
           {featuredMovie?.release_date} | {featuredMovie?.genre} | Movie
         </div>
-        <div className="watch-now-wrapper col-2">
+        <div className="watch-now-wrapper">
           <div className="watch-now">Watch now</div>
           
         </div>
         <div className="popularity-and-rating col-2">
             Popularity: {featuredMovie?.popularity} | Rating: {featuredMovie?.vote_average}
           </div>
-        <div className="col-6">
+        <div className="col-6 movie-title">
           <div className="avatar-the-way">{featuredMovie?.title}</div>
 
         </div>

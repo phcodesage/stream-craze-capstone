@@ -54,8 +54,8 @@ function LoginPage() {
   return (
          <div className="container-fluid bg-dark vh-100">
         <div className="row justify-content-center align-items-center h-100">
-            <div className="col-md-6 col-sm-10">
-                <div className="card text-white bg-dark mb-3">
+            <div className="col-md-6 col-sm-10 card">
+                <div className="card text-white mb-3">
                     <div className="card-body text-center">
                         <img src="../logo@2x.png" style={{ width: '185px' }} alt="logo" />
                         <h5 className="mt-1 mb-5 pb-1">Look for your favorite movies</h5>

@@ -1,5 +1,5 @@
 body, html {
-  color: #000000;
+  color: #000000!important;
 }
 
 .card {
@@ -22,8 +22,8 @@ body, html {
 .btn-signup2 {
   margin: 10px !important;
   margin-top: -5px !important;
-  color: white;
-  border-color: white;
+  color: white !important;
+  border-color: white !important;
 }
 .btn-signup2:hover {
   background: linear-gradient(45deg, #43079c, #610ece)!important;
@@ -52,7 +52,7 @@ body, html {
 }
 /* Assuming you have a global.css or similar file */
 .dark-bg {
-  background-color: #181818;  /* You can adjust this to a color that suits your design */
+   /* You can adjust this to a color that suits your design */
   color: white;  /* Default text color for items in .dark-bg */
 }
 

@@ -218,6 +218,7 @@
     position: absolute;
     left: 280px;
     top: 586px;
+    z-index: 2;
     /* display: flex; */
   }
   .parent-div {
@@ -231,6 +232,25 @@
     min-width: 250px;
     box-sizing: border-box;
     position: relative;
+  }
+  .movie-list .card4, .movie-list .card4 .card4-child {
+    height: 380px;
+  }
+  .movie-list .card4 .card4-child {
+    position: relative;
+  }
+  .movie-list .card4 .card4-item {
+    position: absolute;
+    top: auto !important;
+    bottom: 0 !important;
+  }
+  .movie-list .card4 .house-of-gucci {
+    top: auto !important;
+    bottom: 40px;
+  }
+  .movie-list .card4 .drama {
+    top: auto !important;
+    bottom: 20px;
   }
   .movie-list .card4, .movie-list .card4 .card4-child, .movie-list .card4 .card4-item{
     width: 250px !important;
@@ -316,6 +336,10 @@
   align-items: center;
 }
 
+.account-username {
+  font-size: 18px !important;
+}
+
 .search-input {
   padding: 5px 15px;
   border: none;
@@ -342,4 +366,7 @@
 .custom-full-width {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+.nav-bar {
+  width: 274px !important;
 }
