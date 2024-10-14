@@ -1,36 +1,58 @@
 body, html {
   color: #fff;
+  height: 100%;
+  margin: 0;
+  background-image: url('../../public/rectangle-258@2x.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
+.signup-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .card {
-  background-color: #1e0939 !important; 
-}  
+  background-color: rgba(30, 9, 57, 0.8) !important;
+  border: none !important;
+}
+
 .card-body {
   border-radius: 8px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-  background-color: #1e0939 !important;
+  background-color: rgba(30, 9, 57, 0.8) !important;
   margin: none !important;
+  padding: 2rem !important;
 }
 
 .btn-signup {
-  background: linear-gradient(45deg, #661794, #890ac0)!important;
-  border: none!important;
+  background: linear-gradient(45deg, #661794, #890ac0) !important;
+  border: none !important;
+  transition: all 0.3s ease;
 }
-
 
 .login-btn {
   margin: 10px !important;
   margin-top: -5px !important;
   color: white !important;
   border-color: white !important;
+  transition: all 0.3s ease;
 }
+
 .login-btn:hover {
-  background: linear-gradient(45deg, #470772, #610ece)!important;
-  border-color:#610ece !important;
+  background: linear-gradient(45deg, #470772, #610ece) !important;
+  border-color: #610ece !important;
 }
+
 .btn-signup:hover {
-  background: linear-gradient(45deg, #470772, #610ece)!important;
-  
+  background: linear-gradient(45deg, #470772, #610ece) !important;
 }
+
 .alert {
   margin-top: 20px;
   border-radius: 5px;
@@ -40,9 +62,20 @@ body, html {
 }
 
 ::placeholder {
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
 }
+
 .bg-dark .bg-secondary::placeholder {
-  color: white;  /* make placeholder text white */
-  opacity: 1;    /* make sure the placeholder is fully opaque */
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(134, 23, 148, 0.25);
 }

@@ -4,7 +4,7 @@ import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBInput } from 'mdb-react-ui-kit
 import { Link, useNavigate } from 'react-router-dom';  // Import Link and useNavigate for navigation
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
+  const [usernameOrEmail, setUsernameOrEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
@@ -14,14 +14,13 @@ function LoginPage() {
     let validationErrors = [];
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   
-    if (!email.trim() || !emailRegex.test(email)) {
-        validationErrors.push("Enter a valid Email address!");
-    }
   
     if (!password.trim() || password.length < 4) {
         validationErrors.push("Password must be at least 8 characters!");
     }
-  
+    if (!usernameOrEmail.trim()) {
+        validationErrors.push("Enter a valid Username or Email address!");
+      }
     // If validation errors exist, update the message state
     if (validationErrors.length > 0) {
         setMessage(validationErrors.join(' '));
@@ -30,13 +29,13 @@ function LoginPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+        const response = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ usernameOrEmail, password }),
+          });
       
       const data = await response.json();
   
@@ -61,14 +60,13 @@ function LoginPage() {
                         <h5 className="mt-1 mb-5 pb-1">Look for your favorite movies</h5>
                         <p className="mb-4">Please login to your account</p>
 
-                        <input 
-                            type='email' 
-                            className="form-control mb-4 bg-secondary text-white" 
-                            placeholder='Email address' 
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-
+                            <input 
+                                type='text' 
+                                className="form-control mb-4 bg-secondary text-white" 
+                                placeholder='Username or Email address' 
+                                value={usernameOrEmail}
+                                onChange={(e) => setUsernameOrEmail(e.target.value)}
+                                />
                         <input 
                             type='password' 
                             className="form-control mb-4 bg-secondary text-white" 
