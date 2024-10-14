@@ -16,43 +16,57 @@ const TMDB_API_KEY = '4848bcd4d1b10e9fecb6dea36217ab66'
 const db = new sqlite3.Database('./database.sqlite');
 
 db.run(`
-    CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
-    )
-`);
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL
+  )
+  `);
+
+
+
 
 // Signup route
 app.post('/signup', async (req, res) => {
-  const { name, email, password } = req.body;
+  console.log('Received signup request:', req.body);
+  const { username, name, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   
-  db.run('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', [name, email, hashedPassword], function(err) {
+  db.run('INSERT INTO users (username, name, email, password) VALUES (?, ?, ?, ?)', [username, name, email, hashedPassword], function(err) {
     if (err) {
+      console.error('Database error:', err.message);
+      if (err.message.includes('UNIQUE constraint failed: users.username')) {
+        return res.json({ success: false, error: 'Username already exists. Please choose a different username.' });
+      } else if (err.message.includes('UNIQUE constraint failed: users.email')) {
+        return res.json({ success: false, error: 'Email already exists. Please use a different email address.' });
+      }
       return res.json({ success: false, error: 'Error signing up. Please try again.' });
     }
+    console.log('User inserted successfully');
     res.json({ success: true });
   });
 });
 
+
+
 // Login route
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  console.log("Login endpoint hit with:", req.body);
+  const { usernameOrEmail, password } = req.body;
   
-  db.get('SELECT password FROM users WHERE email = ?', [email], async (err, row) => {
+  db.get('SELECT password FROM users WHERE username = ? OR email = ?', [usernameOrEmail, usernameOrEmail], async (err, row) => {
     if (err) {
       return res.json({ success: false, error: 'Error logging in. Please try again.' });
     }
     if (row && await bcrypt.compare(password, row.password)) {
       res.json({ success: true });
     } else {
-      res.json({ success: false, error: 'Invalid email or password.' });
+      res.json({ success: false, error: 'Invalid username/email or password.' });
     }
   });
 });
+
 
 const fetchMultiplePages = async (pages) => {
   let allMovies = [];
